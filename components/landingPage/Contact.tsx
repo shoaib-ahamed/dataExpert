@@ -1,10 +1,12 @@
 "use client";
 
 import emailjs from "@emailjs/browser";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, ChangeEvent, FormEvent } from "react";
 
 const Contact = () => {
-  const formRef = useRef();
+  // Specify the type of the ref
+  const formRef = useRef<HTMLFormElement>(null);
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -13,7 +15,10 @@ const Contact = () => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: any) => {
+  // Type the event for handleChange
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setForm({
       ...form,
@@ -21,7 +26,8 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: any) => {
+  // Type the event for handleSubmit
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
 
@@ -57,8 +63,8 @@ const Contact = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-center items-center bg-gray-900    p-8 ">
-      <div className="w-[70vw]  md:p-20 md:w-1/2">
+    <div className="flex flex-col md:flex-row justify-center items-center bg-gray-900 p-8">
+      <div className="w-[70vw] md:p-20 md:w-1/2">
         <h2 className="text-white text-4xl mb-6">Get in Touch</h2>
         <form
           ref={formRef}
@@ -84,7 +90,7 @@ const Contact = () => {
             required
           />
           <textarea
-            rows="5"
+            rows={5} // Ensure rows is a number
             name="message"
             value={form.message}
             onChange={handleChange}

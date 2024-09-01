@@ -30,7 +30,11 @@ const ThemeSwitcher = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size={"sm"}>
+        <Button
+          style={{ backgroundColor: "#1f2937", color: "white" }}
+          variant="ghost"
+          size={"sm"}
+        >
           {theme === "light" ? (
             <Sun
               key="light"
@@ -52,12 +56,12 @@ const ThemeSwitcher = () => {
           )}
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-content" align="start">
+      <DropdownMenuContent className="w-content " align="start">
         <DropdownMenuRadioGroup
           value={theme}
           onValueChange={(e) => setTheme(e)}
         >
-          <DropdownMenuRadioItem className="flex gap-2" value="light">
+          <DropdownMenuRadioItem className="flex gap-2 " value="light">
             <Sun size={ICON_SIZE} className="text-muted-foreground" />{" "}
             <span>Light</span>
           </DropdownMenuRadioItem>
